@@ -19,12 +19,10 @@ enum layer_names {
     _BASE,
     _LOWER,
     _RAISE,
-    _ADJUST
 };
 
 #define LOWER  MO(_LOWER)
 #define RAISE  MO(_RAISE)
-#define ADJUST MO(_ADJUST)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT(
@@ -38,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,   KC_1,     KC_2,     KC_3,     KC_4,      KC_5,               KC_6,     KC_7,     KC_8,     KC_9,     KC_0,     KC_BSPC,
     _______,  KC_MINS,  KC_EQL,   KC_LBRC,  KC_RBRC,   KC_BSLS,            KC_LEFT,  KC_DOWN,  KC_UP,    KC_RGHT,  KC_GRV,   KC_TILD,
     KC_LSFT,  KC_Z,     KC_X,     KC_C,     KC_V,      XXXXXXX,            XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_DOT,   XXXXXXX,  RSFT_T(KC_SPC),
-                                            _______,   _______,  KC_ENT,   _______,  _______
+                                            _______,   _______,  KC_ENT,   KC_RGUI,  _______
   ),
   
   [_RAISE] = LAYOUT(
@@ -48,15 +46,5 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             _______,   _______,  KC_BSPC,  _______,  _______
   ),
   
-  [_ADJUST] = LAYOUT(
-    RGB_VAI,   RGB_SAI, RGB_HUI,  RGB_MOD,  XXXXXXX,   RGB_TOG,            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-    RGB_VAD,   RGB_SAD, RGB_HUD,  RGB_RMOD, XXXXXXX,   XXXXXXX,            XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-    XXXXXXX,   XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,   XXXXXXX,            QK_BOOT,    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-                                            _______,   _______,  XXXXXXX,  _______,  _______
-  ),
 };
-
-layer_state_t layer_state_set_user(layer_state_t state) {
-  return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
-}
 
